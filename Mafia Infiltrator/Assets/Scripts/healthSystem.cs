@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class healthSystem : MonoBehaviour
 {
+
+    [SerializeField] private GameObject canvas;
     private float touchTime;
     private bool enemyTouch;
     public int maxHealth = 100;
@@ -58,7 +60,8 @@ public class healthSystem : MonoBehaviour
                 enemyTouch = false;
                 StopAllCoroutines();
                 TakeDamage(maxHealth / 3);
-                Debug.Log("Game Over");
+                canvas.SetActive(true);
+                
             }
         }
     }
