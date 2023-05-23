@@ -6,6 +6,8 @@ using UnityEngine.UI;
 public class playerTeleport : MonoBehaviour
 {
     [SerializeField] private Button interactButton;
+    [SerializeField] private GameObject redGate; // Reference to the red gate GameObject
+    [SerializeField] private GameObject blueGate; 
     private GameObject currentTeleporter;
 
     void Start()
@@ -15,7 +17,7 @@ public class playerTeleport : MonoBehaviour
 
     private void OnInteractButtonClicked()
     {
-        if (currentTeleporter != null)
+        if (currentTeleporter != null && currentTeleporter.GetComponent<Teleporter>().IsTeleporterEnabled())
         {
             transform.position = currentTeleporter.GetComponent<Teleporter>().GetDestination().position;
         }
